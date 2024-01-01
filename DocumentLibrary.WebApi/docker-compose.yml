@@ -1,0 +1,30 @@
+﻿version: '3.3'
+
+services:
+  minio-server:
+    image: minio/minio:latest
+    ports:
+     - "9000:9000"
+     - "9001:9001"
+    environment:
+     - MINIO_ROOT_USER=minioadmin
+     - MINIO_ROOT_PASSWORD=minioadmin
+    volumes:
+     - minio-data:/data
+    command: server /data --console-address ":9001"
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=hello!123
+      - MSSQL_PID=Developer
+    ports:
+      - 1435:1433
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    restart: always
+
+volumes:
+  minio-data:
+  sqlserver_data:  
