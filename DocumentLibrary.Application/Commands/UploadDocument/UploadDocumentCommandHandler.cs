@@ -55,7 +55,7 @@ namespace DocumentsLibrary.Application.Commands.UploadDocument
             {
                 using var thumbnailStream = thumbnailGenerator.GeneratePdfThumbnail(command.FileStream, command.FileName, ThumbnailWidth, ThumbnailHeight);
 
-                await fileRepository.UploadFile(thumbnailId.Value.ToString(), command.ContentType, thumbnailStream, DocumentAccessPolicy.Public);
+                await fileRepository.UploadFile(thumbnailId.Value.ToString(), "image/jpeg", thumbnailStream, DocumentAccessPolicy.Public);
             }
             else
             {
@@ -64,27 +64,5 @@ namespace DocumentsLibrary.Application.Commands.UploadDocument
 
             return thumbnailId;
         }
-
-        //private bool IsPdf(string fileName)
-        //{
-        //    var fileExt = Path.GetExtension(fileName)?.ToLower();
-        //    if (fileExt == ".pdf")
-        //        return true;
-        //
-        //    return false;
-        //}
-        //
-        //private bool IsImage(string fileName)
-        //{
-        //    var fileExt = Path.GetExtension(fileName)?.ToLower();
-        //    switch (fileExt)
-        //    {
-        //        case ".jpg" or ".jpeg" or ".png" or ".gif":
-        //            return true;
-        //    }
-        //
-        //    return false;
-        //}
-
     }
 }
