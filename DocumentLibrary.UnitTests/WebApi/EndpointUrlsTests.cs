@@ -39,18 +39,5 @@ namespace DocumentLibrary.UnitTests.WebApi
             url.ToString().Should().Be(expectedUrl);
         }
 
-        [Fact]
-        public void GetThumbnailUrl_ValidateUrl()
-        {
-            var thumbnailId = Guid.NewGuid();
-            var expectedUrl = $"{baseUrl}/api/documents/{thumbnailId}/thumb";
-
-            // act
-            var url = sut.GetThumbnailUrl(thumbnailId);
-
-            // assert
-            url.ToString().Should().Be(expectedUrl);
-        }
-
     }
 }

@@ -20,10 +20,5 @@ namespace DocumentsLibrary.Application
         {
             return new Uri($"{baseUrl}/api/documents/{documentId}");
         }
-
-        public Uri GetThumbnailUrl(Guid thumbnailId)
-        {
-            return new Uri($"{baseUrl}/api/documents/{thumbnailId}/thumb");
-        }
     }
 }

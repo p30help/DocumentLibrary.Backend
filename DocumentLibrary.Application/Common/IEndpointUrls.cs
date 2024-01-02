@@ -4,6 +4,5 @@
     {
         Uri GetDocumentByTempLink(string encryptedText);
         Uri GetDocumentUrl(Guid documentId);
-        Uri GetThumbnailUrl(Guid thumbnailId);
     }
 }
