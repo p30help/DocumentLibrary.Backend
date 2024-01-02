@@ -1,6 +1,5 @@
 ﻿using DocumentLibrary.Domain.Models;
 using DocumentLibrary.Domain.Users;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

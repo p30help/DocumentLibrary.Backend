@@ -1,16 +1,16 @@
-﻿using DocumentsLibrary.Application;
+﻿using DocumentLibrary.Infrastructure.Api;
 using FluentAssertions;
 
 namespace DocumentLibrary.UnitTests.WebApi
 {
     public class EndpointUrlsTests
     {
-        EndpointUrls sut;
+        EndpointUris sut;
         string baseUrl = "http://localhost";
 
         public EndpointUrlsTests()
         {
-            sut = new EndpointUrls(baseUrl);
+            sut = new EndpointUris(baseUrl);
         }
 
         [Fact]

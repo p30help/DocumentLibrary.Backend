@@ -6,12 +6,12 @@ namespace DocumentsLibrary.Application.Queries.GetListOfDocuments
 {
     public class UploadDocumentCommand : IRequest<OperationResult<UploadDocumentResult>>
     {
-        public Guid UserId { get; set; }
+        public required Guid UserId { get; set; }
 
-        public string FileName { get; set; }
+        public required string FileName { get; set; }
 
-        public string ContentType { get; set; }
+        public required string ContentType { get; set; }
 
-        public Stream FileStream { get; set; }
+        public required Stream FileStream { get; set; }
     }
 }

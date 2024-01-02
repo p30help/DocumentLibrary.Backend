@@ -76,13 +76,13 @@ namespace DocumentLibrary.UnitTests.Infrastructure
             tempCode.DocumentId.Should().Be(id);
         }
 
-        public void SetupEncryptReturnValue(string code)
+        private void SetupEncryptReturnValue(string code)
         {
             encyptionServiceMock.Setup(x => x.Encrypt(It.IsAny<string>()))
                 .Returns(code);
         }
 
-        public void SetupDecryptReturnValue(string value)
+        private void SetupDecryptReturnValue(string value)
         {
             encyptionServiceMock.Setup(x => x.Decrypt(It.IsAny<string>()))
                 .Returns(value);

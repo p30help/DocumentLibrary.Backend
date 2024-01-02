@@ -1,15 +1,17 @@
 ﻿using DocumentLibrary.Domain.Contracts;
 using DocumentLibrary.Domain.Users;
 using DocumentLibrary.Infrastructure;
+using DocumentLibrary.Infrastructure.Api;
 using DocumentLibrary.Infrastructure.EF;
+using DocumentLibrary.Infrastructure.EF.Repositories;
 using DocumentLibrary.Infrastructure.Minio;
-using DocumentLibrary.Infrastructure.Repositories;
 using DocumentLibrary.Infrastructure.ServiceConfiguration;
 using DocumentLibrary.Infrastructure.TempLink;
 using DocumentLibrary.Infrastructure.Thumbnail;
 using DocumentLibrary.Infrastructure.Token;
 using DocumentsLibrary.Application.Common;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,15 +32,38 @@ namespace DocumentLibrary.Infrastructure.ServiceConfiguration
             services.AddSingleton<ITempCodeGenerator, TempCodeGenerator>();
             services.AddSingleton<IDateProvider, DateProvider>();
             services.AddSingleton<IThumbnailGenerator, ThumbnailGenerator>();
+            services.AddEndpointUri();
 
-            services.AddEntityFramework(configuration);
-            services.AddMinio(configuration);
-
-            // Encryption
             var encyptionService = new EncyptionService(configuration["Encryption:Key"]!, configuration["Encryption:IV_Base64"]!);
             services.AddSingleton<IEncyptionService>(encyptionService);
 
-            //Identity
+            services.AddEntityFramework(configuration);
+
+            services.AddUserIdentity();
+
+            services.AddJwtAuth(configuration);
+
+            services.AddMinio(configuration);
+           
+            return services;
+        }
+
+        private static IServiceCollection AddEndpointUri(this IServiceCollection services)
+        {
+            services.AddScoped<IEndpointUris, EndpointUris>(provider =>
+            {
+                var httpContextAccessor = provider.GetService<IHttpContextAccessor>();
+                var req = httpContextAccessor!.HttpContext!.Request;
+                var baseUrl = $"{req.Scheme}://{req.Host}";
+
+                return new EndpointUris(baseUrl);
+            });
+
+            return services;
+        }
+
+        private static IServiceCollection AddUserIdentity(this IServiceCollection services)
+        {
             services.AddIdentity<AppUser, AppRole>(options =>
             {
                 options.Password.RequireUppercase = false;
@@ -50,7 +75,11 @@ namespace DocumentLibrary.Infrastructure.ServiceConfiguration
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddRoles<AppRole>();
 
-            //JWT
+            return services;
+        }
+
+        private static IServiceCollection AddJwtAuth(this IServiceCollection services, IConfiguration configuration)
+        {
             var jwtConfiguration = new JwtConfiguration();
             configuration.GetSection("Jwt").Bind(jwtConfiguration);
             services.AddSingleton(jwtConfiguration);

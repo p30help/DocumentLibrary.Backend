@@ -5,7 +5,7 @@ namespace DocumentsLibrary.Application.Queries.GetListOfDocuments
 {
     public class GetDocumentStreamQuery : IRequest<OperationResult<GetDocumentStreamResult>>
     {
-        public Guid DocumentId { get; set; }
-        public Guid UserId { get; set; }
+        public required Guid DocumentId { get; set; }
+        public required Guid UserId { get; set; }
     }
 }

@@ -16,8 +16,7 @@ namespace DocumentLibrary.WebApi.Middlewares.ErrorHandling
 
         public async Task InvokeAsync(HttpContext context)
         {
-            if (context.Request.Path.HasValue &&
-                context.Request.Path.Value.StartsWith("/api/"))
+            if (context.Request.Path.HasValue && context.Request.Path.Value.StartsWith("/api/"))
             {
                 try
                 {

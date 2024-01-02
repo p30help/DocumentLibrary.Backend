@@ -13,7 +13,7 @@ namespace DocumentLibrary.UnitTests.Application.Commands
         GenerateTemporaryLinkCommandHandler sut;
         Mock<IDocumentsRepository> documentsRepositoryMock = new();
         Mock<ITempCodeGenerator> tempLinkGeneratorMock = new();
-        Mock<IEndpointUrls> endpointUrlsMock = new();
+        Mock<IEndpointUris> endpointUrlsMock = new();
         GenerateTemporaryLinkCommand command = new()
         {
             DocumentId = Guid.NewGuid(),

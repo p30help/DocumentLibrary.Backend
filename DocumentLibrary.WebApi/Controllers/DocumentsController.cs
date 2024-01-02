@@ -58,23 +58,6 @@ namespace DocumentLibrary.WebApi.Controllers
             return File(result.Data!.FileStream, result.Data!.ContentType, result.Data!.FileName);
         }
 
-        //[AllowAnonymous]
-        //[HttpGet("{thumbnailId}/thumb")]
-        //[ProducesResponseType(typeof(FileStreamResult), StatusCodes.Status200OK)]
-        //public async Task<IActionResult> GetTempDocument(Guid thumbnailId)
-        //{
-        //    var query = new GetThumbnailStreamQuery()
-        //    {
-        //        ThumbnailId = thumbnailId,
-        //    };
-        //    var result = await mediator.Send(query);
-        //
-        //    if (!result.IsSuccess)
-        //        return Result(result);
-        //
-        //    return File(result.Data!.FileStream, result.Data!.ContentType);
-        //}
-
         [AllowAnonymous]
         [HttpGet("temp/{encryptedText}")]
         [ProducesResponseType(typeof(FileStreamResult), StatusCodes.Status200OK)]

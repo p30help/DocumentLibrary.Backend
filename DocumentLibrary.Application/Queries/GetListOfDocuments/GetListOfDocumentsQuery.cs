@@ -6,7 +6,7 @@ namespace DocumentsLibrary.Application.Queries.GetListOfDocuments
 {
     public class GetListOfDocumentsQuery : IRequest<OperationResult<PagedData<GetListOfDocumentsResult>>>
     {
-        public Guid UserId { get; set; }
+        public required Guid UserId { get; set; }
         public int? PageNumber { get; set; }
         public int? PageSize { get; set; }
     }

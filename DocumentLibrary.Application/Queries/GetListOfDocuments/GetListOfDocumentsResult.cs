@@ -1,16 +1,13 @@
-﻿using DocumentLibrary.Domain.Models;
-
-namespace DocumentsLibrary.Application.Queries.GetListOfDocuments
+﻿namespace DocumentsLibrary.Application.Queries.GetListOfDocuments
 {
     public class GetListOfDocumentsResult
     {
-        public Guid Id { get; set; }
-        public string FileName { get; set; }
-        public string ContentType { get; set; }
-        public DateTime RecordDate { get; set; }
-        public string DocumentType { get; set; }
-        public int DownloadCount { get; set; }
-        //public string DocumentUrl { get; set; }
+        public required Guid Id { get; set; }
+        public required string FileName { get; set; }
+        public required string ContentType { get; set; }
+        public required DateTime RecordDate { get; set; }
+        public required string DocumentType { get; set; }
+        public required int DownloadCount { get; set; }
         public string? ThumbnailUrl { get; set; }
     }
 }

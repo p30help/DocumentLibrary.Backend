@@ -1,14 +1,14 @@
 ﻿using DocumentsLibrary.Application.Common;
 
-namespace DocumentsLibrary.Application
+namespace DocumentLibrary.Infrastructure.Api
 {
-    public class EndpointUrls : IEndpointUrls
+    public class EndpointUris : IEndpointUris
     {
         private readonly string baseUrl;
 
-        public EndpointUrls(string endpointUrl)
+        public EndpointUris(string endpointUrl)
         {
-            this.baseUrl = endpointUrl;
+            baseUrl = endpointUrl;
         }
 
         public Uri GetDocumentByTempLink(string encryptedText)

@@ -2,7 +2,7 @@
 {
     public class UploadDocumentResult
     {
-        public Guid DocumentId { get; set; }
-        public string FileName { get; set; }
+        public required Guid DocumentId { get; set; }
+        public required string FileName { get; set; }
     }
 }

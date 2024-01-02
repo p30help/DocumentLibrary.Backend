@@ -1,6 +1,6 @@
 ﻿namespace DocumentsLibrary.Application.Common
 {
-    public interface IEndpointUrls
+    public interface IEndpointUris
     {
         Uri GetDocumentByTempLink(string encryptedText);
         Uri GetDocumentUrl(Guid documentId);

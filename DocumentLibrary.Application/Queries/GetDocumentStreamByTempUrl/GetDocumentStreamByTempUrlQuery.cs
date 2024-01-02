@@ -5,6 +5,6 @@ namespace DocumentsLibrary.Application.Queries.GetListOfDocuments
 {
     public class GetDocumentStreamByTempUrlQuery : IRequest<OperationResult<GetDocumentStreamByTempUrlQueryResult>>
     {
-        public string EncryptedText { get; set; }
+        public required string EncryptedText { get; set; }
     }
 }
