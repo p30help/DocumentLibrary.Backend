@@ -9,7 +9,7 @@ using DocumentLibrary.Infrastructure.ServiceConfiguration;
 using DocumentLibrary.Infrastructure.TempLink;
 using DocumentLibrary.Infrastructure.Thumbnail;
 using DocumentLibrary.Infrastructure.Token;
-using DocumentsLibrary.Application.Common;
+using DocumentsLibrary.Application.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;

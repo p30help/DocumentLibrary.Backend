@@ -1,5 +1,5 @@
 ﻿using DocumentLibrary.Domain.Contracts;
-using DocumentsLibrary.Application.Common;
+using DocumentsLibrary.Application.Contracts;
 using Newtonsoft.Json;
 
 namespace DocumentLibrary.Infrastructure.TempLink;

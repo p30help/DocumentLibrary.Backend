@@ -3,7 +3,7 @@ using DocumentLibrary.Domain.Models;
 using DocumentLibrary.Domain.Users;
 using DocumentLibrary.Domain.ValueObjects;
 using DocumentsLibrary.Application.Commands.UploadDocument;
-using DocumentsLibrary.Application.Common;
+using DocumentsLibrary.Application.Contracts;
 using DocumentsLibrary.Application.Queries.GetListOfDocuments;
 using FluentAssertions;
 using Moq;

@@ -1,6 +1,7 @@
 ﻿using DocumentLibrary.Domain.Contracts;
 using DocumentLibrary.Domain.Models;
 using DocumentsLibrary.Application.Common;
+using DocumentsLibrary.Application.Contracts;
 using DocumentsLibrary.Application.Queries.GetListOfDocuments;
 using MediatR;
 

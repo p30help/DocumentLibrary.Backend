@@ -1,4 +1,4 @@
-﻿using DocumentsLibrary.Application.Common;
+﻿using DocumentsLibrary.Application.Contracts;
 using System.Drawing;
 
 namespace DocumentLibrary.Infrastructure.Thumbnail;

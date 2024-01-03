@@ -1,4 +1,4 @@
-﻿namespace DocumentsLibrary.Application.Common
+﻿namespace DocumentsLibrary.Application.Contracts
 {
     public interface IEndpointUris
     {

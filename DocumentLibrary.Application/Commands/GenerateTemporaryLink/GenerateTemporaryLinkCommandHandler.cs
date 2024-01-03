@@ -1,6 +1,7 @@
 ﻿using DocumentLibrary.Domain.Contracts;
 using DocumentsLibrary.Application.Commands.UploadDocument;
 using DocumentsLibrary.Application.Common;
+using DocumentsLibrary.Application.Contracts;
 using DocumentsLibrary.Application.Queries.GetListOfDocuments;
 using MediatR;
 
