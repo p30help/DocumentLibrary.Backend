@@ -42,7 +42,7 @@ Then
 ``dotnet run --project DocumentLibrary.WebApi --no-restore``
 
 
-After the prject ran properly, you can see the Swagger page in ``https://localhost:7090/``
+After the prject ran properly, you can see the Swagger page in ``https://localhost:7090/swagger/index.html``
 
 Now the Backend side is Up, you should run the Front-end side as well to complete the scenario. To do that go to <a href="https://github.com/p30help/DocumentLibrary.Angular">DocumentLibrary.Angular</a> and follow the steps.
 
