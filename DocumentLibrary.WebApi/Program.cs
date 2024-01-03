@@ -1,3 +1,5 @@
+using DocumentLibrary.Infrastructure.EF;
+using DocumentLibrary.Infrastructure.Minio;
 using DocumentLibrary.Infrastructure.ServiceConfiguration;
 using DocumentLibrary.WebApi.Middlewares.ErrorHandling;
 using DocumentsLibrary.Application.ServiceConfiguration;
@@ -45,6 +47,8 @@ builder.Services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
 var app = builder.Build();
 
 app.EnsureDatabaseMigration();
+
+app.EnsureMakingMinioBuckets();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -16,9 +16,7 @@ public class FileRepository : IFileRepository
     }
 
     public async Task UploadFile(string fileNameWithExtention, string contentType, Stream fileStreamData, DocumentAccessPolicy accessPolicy)
-    {
-        await TryToCreateBucket(accessPolicy);
-
+    {        
         var putObjectArgs = new PutObjectArgs()
                 .WithBucket(GetBucketName(accessPolicy).Name)
                 .WithObject(fileNameWithExtention)
@@ -58,13 +56,19 @@ public class FileRepository : IFileRepository
 
         return memoryStream;
 
-    }    
+    }
 
     public string GetDirectFileUrl(Guid fileId, DocumentAccessPolicy accessPolicy)
     {
         var bucket = GetBucketName(accessPolicy);
 
         return $"http://{minioConfiguration.ServiceUrl}/{bucket.Name}/{fileId}";
+    }
+
+    public async Task TryToCreateDirectories()
+    {
+        await TryToCreateBucket(DocumentAccessPolicy.Public);
+        await TryToCreateBucket(DocumentAccessPolicy.Private);
     }
 
     private async Task TryToCreateBucket(DocumentAccessPolicy bucketType)
@@ -83,12 +87,12 @@ public class FileRepository : IFileRepository
 
             if (bucket.Public)
             {
-                await MakeBucketPublic(bucket.Name);
+                await SetPublicPolicyForBucket(bucket.Name);
             }
         }
     }
 
-    private async Task MakeBucketPublic(string bucketName)
+    private async Task SetPublicPolicyForBucket(string bucketName)
     {
         var policyJson = $@"{{
                             ""Version"": ""2012-10-17"",

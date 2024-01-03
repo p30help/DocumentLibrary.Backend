@@ -7,6 +7,8 @@
         Task<Stream> GetFileStream(Guid fileId, DocumentAccessPolicy accessPolicy);
 
         string GetDirectFileUrl(Guid fileId, DocumentAccessPolicy accessPolicy);
+
+        Task TryToCreateDirectories();
     }
 
     public enum DocumentAccessPolicy

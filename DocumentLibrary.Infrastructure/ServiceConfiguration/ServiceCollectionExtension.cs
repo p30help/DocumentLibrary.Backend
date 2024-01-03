@@ -1,6 +1,5 @@
 ﻿using DocumentLibrary.Domain.Contracts;
 using DocumentLibrary.Domain.Users;
-using DocumentLibrary.Infrastructure;
 using DocumentLibrary.Infrastructure.Api;
 using DocumentLibrary.Infrastructure.EF;
 using DocumentLibrary.Infrastructure.EF.Repositories;
